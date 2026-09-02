@@ -5,9 +5,10 @@
 
 namespace lrc {
     struct Timestamp {
-        int m;
-        int s;
-        int ms;
+        int64_t ms;
+
+        bool operator <(const Timestamp& other) const { return ms < other.ms; }
+        bool operator ==(const Timestamp& other) const { return ms == other.ms; }
     };
 
     struct Lyric {

@@ -7,6 +7,11 @@
 #include <lrc/Lyric.hpp>
 
 namespace lrc {
+
+    class Lyrics {
+        public: 
+    }
+
     class Song {
         public:
             // constructors
