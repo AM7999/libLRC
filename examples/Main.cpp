@@ -18,8 +18,7 @@ int main(int argc, char* argv[]) {
     std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
     file.close();
 
-    Song s(content);
-    s.printLyrics();
+    
 
     return 0;
 }

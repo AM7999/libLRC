@@ -4,7 +4,7 @@ project(libLRC)
 
 # libLRC
 
-add_library(LRC SHARED src/Main.cpp)
+add_library(LRC SHARED src/Lyrics.cpp)
 
 target_include_directories(LRC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
