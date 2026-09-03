@@ -7,6 +7,7 @@ namespace lrc {
     struct Timestamp {
         int64_t ms;
 
+        // allows comparisons using < and == 
         bool operator <(const Timestamp& other) const { return ms < other.ms; }
         bool operator ==(const Timestamp& other) const { return ms == other.ms; }
     };
