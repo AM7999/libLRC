@@ -1,8 +1,6 @@
 #ifndef LRC_PARSER_H
 #define LRC_PARSER_H
 
-#include <algorithm>
-
 #include <lrc/Diagnostics.hpp>
 
 namespace lrc {
