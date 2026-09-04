@@ -27,6 +27,8 @@ namespace lrc {
             std::optional<Lyric> lyricAt(Timestamp t);
 
         private:
+            void sort();
+
             std::vector<Lyric> lines;
     };
 }

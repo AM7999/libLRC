@@ -12,10 +12,10 @@ target_include_directories(LRC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # LRC_test
 
-add_executable(LRC_test examples/Main.cpp)
+add_executable(lrc-test examples/Main.cpp)
 
-target_include_directories(LRC_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(lrc-test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_link_libraries(LRC_test LRC)
+target_link_libraries(lrc-test LRC)
 
 #end

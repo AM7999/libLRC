@@ -1,35 +1,43 @@
-// #ifndef SONG_H
-// #define SONG_H
+#ifndef LRC_SONG_H
+#define LRC_SONG_H
 
-// #include <string>
+#include <string>
+#include <optional>
 
-// #include <lrc/Lyric.hpp>
-// #include <lrc/Lyrics.hpp>
+#include <lrc/Lyrics.hpp>
+#include <lrc/Lyric.hpp>
 
-// namespace lrc {
-//     class Song {
-//         public:
-//             Song(std::string file);
-//             Song(std::ifstream& file);
+namespace lrc {
+    class Song {
+        public:
+            Song() = default;
+            Song(Lyrics lyrics);
 
-//             const std::string& title() const { return title; }
-//             const std::string& artist() const { return artist; }
-//             const std::string& album() const { return album; }
-//             const std::string& lyricist() const { return lyricist; }
-//             const std::string& lrcAuthor() const { return lrcAuthor; }
-//             const Timestamp& length() const { return length; }
+            // getters and setters
+            const std::string& title() const { return title_; }
+            void setTitle(std::string& t) { this->title_ = t; }
 
-//             void printLyrics();
+            const std::string& artist() const { return artist_; }
+            void setArtist(std::string& a) { this->artist_ = a; }
 
-//         private:
-//             std::string title;
-//             std::string artist;
-//             std::string album;
-//             std::string lyricist;
-//             std::string lrcAuthor;
-//             Timestamp length;
-//             Lyrics lyrics;
-//     };
-// }
+            const std::string& album() const { return album_; }
+            void setAlbum(std::string& a) { this->album_ = a; }
 
-// #endif
+            std::optional<Timestamp> length() const { return length_; }
+            void setLength(Timestamp& t) { length_ = t; }
+
+            Lyrics& lyrics() { return lyrics_; }
+            const Lyrics& lyrics() const { return lyrics_; }
+        
+        private:
+            std::string title_;
+            std::string artist_;
+            std::string album_;
+            std::string lyricist_;
+            std::string lrcAuthor_;
+            std::optional<Timestamp> length_;
+            Lyrics lyrics_;
+    };
+}
+
+#endif
