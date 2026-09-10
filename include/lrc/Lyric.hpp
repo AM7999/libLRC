@@ -1,6 +1,8 @@
 #ifndef LRC_LYRIC_H
 #define LRC_LYRIC_H
 
+#include <cstdint>
+#include <ostream>
 #include <string>
 
 namespace lrc {
@@ -16,6 +18,10 @@ namespace lrc {
     struct Lyric {
         Timestamp ts;
         std::string lyric;
+
+        friend std::ostream& operator <<(std::ostream& outs, const Lyric& l) {
+            return outs << l.ts.ms << ", " << l.lyric;
+        }
     };
 }
 
