@@ -1,9 +1,11 @@
 #include "lrc/Diagnostics.hpp"
+#include "lrc/Lyrics.hpp"
 #include <lrc/Parser.hpp>
 
 #include <algorithm>
 #include <cctype>
 #include <iostream>
+#include <fstream>
 
 namespace lrc {
 
@@ -16,8 +18,33 @@ namespace lrc {
         return Result{};
     }
 
+    Result Parser::parseFile(std::ifstream& file) const {
+        std::size_t ln = 4;
+        std::vector<ParseDiag> diag;
+        std::vector<std::string> text = loadFileAsString(file);
+
+        for(std::string& line : text) {
+            classify(line, ln, diag);
+        }
+
+        return Result {
+            Lyrics()
+            //Song(),
+            diag
+        };
+    }
+
+    std::vector<std::string> Parser::loadFileAsString(std::ifstream& stream) const {
+        std::string line;
+        std::vector<std::string> lines;
+        while(std::getline(stream, line)) {
+            lines.push_back(line);
+        }
+        return lines;
+    }
+
     Parser::Parsed Parser::classify(const std::string& line, std::size_t lineNumber, std::vector<ParseDiag>& diagnostics) const {
-        Parsed result;
+        Parsed result = {};
 
         std::string trimmed = trim(line);
 

@@ -4,8 +4,11 @@ project(libLRC)
 
 # libLRC
 
-add_library(LRC SHARED src/Lyrics.cpp src/Parser.cpp)
-
+add_library(LRC SHARED 
+    src/Lyrics.cpp 
+    src/Parser.cpp
+    src/Song.cpp
+)
 target_include_directories(LRC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 #end
@@ -13,9 +16,7 @@ target_include_directories(LRC PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 # LRC_test
 
 add_executable(lrc-test examples/Main.cpp)
-
 target_include_directories(lrc-test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
 target_link_libraries(lrc-test LRC)
 
 #end

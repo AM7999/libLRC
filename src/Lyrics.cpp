@@ -2,7 +2,7 @@
 
 namespace lrc {
     Lyrics::Lyrics(std::vector<Lyric> lines) {
-
+        this->lines = lines;
     }
 
     void Lyrics::insert(const Lyric& lyric) {

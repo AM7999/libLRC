@@ -5,18 +5,19 @@
 #include <lrc/Lyrics.hpp>
 
 #include <iostream>
+#include <fstream>
 
 int main() {
-    std::string line = "[00:16.109]That they didn't really matter until you";
+    std::ifstream file("../ioit.lrc");
+    if (!file) {
+        std::cerr << "Error when reading file\n";
+    }
 
     lrc::Parser parser;
-    lrc::Result s = parser.parse(line);
+    lrc::Result s = parser.parseFile(file);
     lrc::Song song = s.song;
 
-    lrc::Lyrics lyrics = song.lyrics();
-
-    std::cout << lyrics.at(0);
-    
+    //std::cout << lyrics.at(0);
 
     return 0;
 }

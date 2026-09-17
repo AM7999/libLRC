@@ -1,17 +1,27 @@
 #ifndef LRC_PARSER_H
 #define LRC_PARSER_H
 
+#include <lrc/Lyric.hpp>
 #include <lrc/Diagnostics.hpp>
 
 namespace lrc {
-    class Parser {
-    public:
-        explicit Parser();
 
-        Result parse(const std::string& text) const;
-        Result parse(std::istream& stream) const;
-        // might change to ifstream
-        Result parseFile(std::string& path) const;
+    struct Metadata {
+        std::string t;
+        std::string a;
+        std::string ly;
+        std::string lat;
+        Timestamp l;
+    };
+
+    class Parser {
+        public:
+            explicit Parser();
+
+            Result parse(const std::string& text) const;
+            Result parse(std::istream& stream) const;
+            // changed to ifstream :3
+            Result parseFile(std::ifstream& path) const;
 
         private:
             struct Parsed {
@@ -20,6 +30,8 @@ namespace lrc {
                 std::string value;
                 Timestamp ts;
             };
+
+            std::vector<std::string> loadFileAsString(std::ifstream& stream) const;
 
             Parsed classify(const std::string& line, std::size_t lineNumber, std::vector<ParseDiag>& diagnostics) const;
 

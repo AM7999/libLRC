@@ -20,7 +20,9 @@ namespace lrc {
 
     struct Result {
         // provide a Song
-        Song song;
+        //Song song;
+        // bandaid for now
+        Lyrics lyrics;
         // and if anything happened like a warning or error
         // a diagnostic is added here
         std::vector<ParseDiag> diagnostics;
