@@ -1,6 +1,3 @@
-#include "lrc/Diagnostics.hpp"
-#include "lrc/Lyrics.hpp"
-#include <lrc/Parser.hpp>
 
 #include <algorithm>
 #include <cctype>

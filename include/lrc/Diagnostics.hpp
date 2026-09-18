@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include <lrc/Song.hpp>
+#include <lrc/LRC.hpp>
 
 namespace lrc {
     // just something to have

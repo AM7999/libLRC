@@ -3,6 +3,7 @@
 
 #include <optional>
 #include <vector>
+
 #include <lrc/Lyric.hpp>
 
 namespace lrc {

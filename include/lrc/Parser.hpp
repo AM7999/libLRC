@@ -1,8 +1,7 @@
 #ifndef LRC_PARSER_H
 #define LRC_PARSER_H
 
-#include <lrc/Lyric.hpp>
-#include <lrc/Diagnostics.hpp>
+#include <string>
 
 namespace lrc {
 

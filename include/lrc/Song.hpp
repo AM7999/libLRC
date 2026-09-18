@@ -5,13 +5,13 @@
 #include <optional>
 
 #include <lrc/Lyrics.hpp>
-#include <lrc/Lyric.hpp>
+#include <lrc/Parser.hpp>
 
 namespace lrc {
     class Song {
         public:
             Song() = default;
-            Song(Lyrics lyrics);
+            Song(const Metadata& meta, const Lyrics& lyrics);
 
             // getters and setters
             const std::string& title() const { return title_; }
