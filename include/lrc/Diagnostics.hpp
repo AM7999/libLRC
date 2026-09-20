@@ -3,8 +3,7 @@
 
 #include <string>
 #include <vector>
-
-#include <lrc/LRC.hpp>
+#include <lrc/Lyrics.hpp>
 
 namespace lrc {
     // just something to have

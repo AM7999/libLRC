@@ -1,4 +1,4 @@
-
+#include <lrc/Lyrics.hpp>
 
 namespace lrc {
     Lyrics::Lyrics(std::vector<Lyric> lines) {

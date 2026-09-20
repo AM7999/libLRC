@@ -2,16 +2,11 @@
 #define LRC_PARSER_H
 
 #include <string>
+#include <lrc/Lyric.hpp>
+#include <lrc/Diagnostics.hpp>
+#include <lrc/Song.hpp>
 
 namespace lrc {
-
-    struct Metadata {
-        std::string t;
-        std::string a;
-        std::string ly;
-        std::string lat;
-        Timestamp l;
-    };
 
     class Parser {
         public:

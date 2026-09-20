@@ -5,7 +5,7 @@
 #include <optional>
 
 #include <lrc/Lyrics.hpp>
-#include <lrc/Parser.hpp>
+#include <lrc/Structs.h>
 
 namespace lrc {
     class Song {

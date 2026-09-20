@@ -1,3 +1,4 @@
+#include <lrc/Parser.hpp>
 
 #include <algorithm>
 #include <cctype>
@@ -24,8 +25,9 @@ namespace lrc {
             classify(line, ln, diag);
         }
 
+        // FIXME: make the result struct return a song after i finish the constructor
         return Result {
-            Lyrics()
+            Lyrics(),
             //Song(),
             diag
         };

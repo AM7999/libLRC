@@ -1,3 +1,4 @@
+#include <lrc/Song.hpp>
 
 namespace lrc {
     Song::Song(const Metadata& meta, const Lyrics& lyrics) {
