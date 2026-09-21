@@ -7,15 +7,20 @@
 #include <iostream>
 #include <fstream>
 
-int main() {
-    std::ifstream file("../ioit.lrc");
+int main(int argc, char* argv[]) {
+    if(argc == 1) {
+        std::cout << argv[0] << " <file>\n";
+        return 1;
+    }
+    
+    std::ifstream file(argv[1]);
     if (!file) {
         std::cerr << "Error when reading file\n";
     }
 
     lrc::Parser parser;
     lrc::Result s = parser.parseFile(file);
-    lrc::Song song = s.song;
+    //lrc::Song song = s.song;
 
     //std::cout << lyrics.at(0);
 

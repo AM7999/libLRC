@@ -4,6 +4,8 @@ project(libLRC)
 
 # libLRC
 
+set(CMAKE_CXX_STANDARD 20)
+
 add_library(LRC SHARED 
     src/Lyrics.cpp 
     src/Parser.cpp
