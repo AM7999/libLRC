@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug lrc-test",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/lrc-test",
+      "args": [
+        "${input:lrcFile}"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "cmake build (debug)"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "lrcFile",
+      "type": "promptString",
+      "description": "Path to an .lrc file to pass as argv[1]",
+      "default": "${workspaceFolder}/ioit.lrc"
+    }
+  ]
+}
