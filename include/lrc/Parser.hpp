@@ -28,7 +28,7 @@ namespace lrc {
             std::vector<std::string> loadFileAsString(std::ifstream& stream) const;
 
             Parsed classify(const std::string& line, std::size_t lineNumber, std::vector<ParseDiag>& diagnostics) const;
-
+            
             bool tryTimestamp(const std::string& raw, Timestamp& out) const;
             void applyMetadata(Song& song, const std::string& tag, const std::string& val) const;
 

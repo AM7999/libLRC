@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include <lrc/Lyrics.hpp>
+#include <lrc/Song.hpp>
 
 namespace lrc {
     // just something to have
@@ -19,9 +19,7 @@ namespace lrc {
 
     struct Result {
         // provide a Song
-        //Song song;
-        // bandaid for now
-        Lyrics lyrics;
+        Song song;
         // and if anything happened like a warning or error
         // a diagnostic is added here
         std::vector<ParseDiag> diagnostics;

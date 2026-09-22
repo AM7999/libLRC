@@ -26,7 +26,7 @@ namespace lrc {
     }
 
     void Lyrics::sort() {
-        // simple insertion sort
+        //simple insertion sort
         for (std::size_t i = 1; i < lines.size(); ++i) {
             Lyric key = lines[i];
             std::size_t j = i;
