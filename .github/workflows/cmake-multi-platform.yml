@@ -1,4 +1,4 @@
-name: Minecraft Launcher build
+name: libLRC build
 
 on:
   push:
