@@ -77,7 +77,7 @@ namespace lrc {
     }
 
     bool Parser::tryTimestamp(const std::string& raw, Timestamp& out) const {
-        // FIXME:
+        // FIXME: this is also just.. wow i need to fix this.. 
         size_t colonPos = raw.find_last_of(':');
         size_t dotPos = raw.find('.');
         if(colonPos == std::string::npos || dotPos == std::string::npos || dotPos < colonPos) {
