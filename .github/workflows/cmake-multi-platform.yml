@@ -83,4 +83,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: libLRC_Linux-x86_64
-          path: libLRC.so
+          path: build/libLRC.so
