@@ -2,12 +2,13 @@
 
 namespace lrc {
     Song::Song(const Metadata& meta, const Lyrics& lyrics) {
-        this->title_ = meta.t;
-        this->artist_ = meta.a;
+        this->title_ = meta.ti;
+        this->artist_ = meta.ar;
         this->album_ = meta.al;
-        this->lyricist_ = meta.ly;
-        this->lrcAuthor_ = meta.lat;
-        this->length_ = meta.l;
+        this->author_ = meta.au;
+        this->lyricist_ = meta.lr;
+        this->length_ = meta.length;
+        this->lrcAuthor_ = meta.by;
 
         this->lyrics_ = lyrics;
     }

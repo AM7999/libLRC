@@ -11,6 +11,7 @@ namespace lrc {
 
     Parser::Parser() = default;
 
+    // TODO: neglected this guy... un neglect him. make him big and strong like parseFile()
     Result Parser::parse(const std::string& text) const {
         std::size_t ln = 4;
         std::vector<ParseDiag> diag;
@@ -36,7 +37,24 @@ namespace lrc {
                     lr.push_back({parsedLine.ts, parsedLine.value});
                     break;
                 case Parsed::Kind::Metadata:
-                    std::cout << "added new Parsed::Kind::Metadata of: " << std::endl;
+                    Timestamp temp;
+
+                    // FIXME: This is bad. Really Bad. There has to be a better way than doing all this
+                    if(parsedLine.tag == "ti") {meta.ti = parsedLine.value;}
+                    if(parsedLine.tag == "ar") {meta.ar = parsedLine.value;}
+                    if(parsedLine.tag == "al") {meta.al = parsedLine.value;}
+                    if(parsedLine.tag == "au") {meta.au = parsedLine.value;}
+                    if(parsedLine.tag == "lr") {meta.lr = parsedLine.value;}
+                    
+                    if(parsedLine.tag == "length") 
+                        if(tryTimestamp(parsedLine.value, temp)) 
+                            meta.length = temp;
+                    
+                    if(parsedLine.tag == "by") {meta.by = parsedLine.value;}
+                    
+                    std::cout << "added new Parsed::Kind::Metadata of: " << parsedLine.value << std::endl;
+                    break;
+                case Parsed::Kind::Comment:
                     break;
                 default:
                     std::cout << " " << std::endl;
@@ -59,11 +77,14 @@ namespace lrc {
     }
 
     bool Parser::tryTimestamp(const std::string& raw, Timestamp& out) const {
-        size_t colonPos = raw.find(':');
+        // FIXME:
+        size_t colonPos = raw.find_last_of(':');
         size_t dotPos = raw.find('.');
         if(colonPos == std::string::npos || dotPos == std::string::npos || dotPos < colonPos) {
             return false;
         }
+
+        // i did all this to write a fucking audacious plugin.....
 
         try {
             int m = std::stoi(raw.substr(0,colonPos));

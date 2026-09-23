@@ -6,12 +6,13 @@
 
 namespace lrc {
     struct Metadata {
-        std::string t;
-        std::string a;
+        std::string ti;
+        std::string ar;
         std::string al;
-        std::string ly;
-        std::string lat;
-        Timestamp l;
+        std::string au;
+        std::string lr;
+        Timestamp length;
+        std::string by;
     };
 }
 

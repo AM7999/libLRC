@@ -30,9 +30,12 @@ namespace lrc {
             const Lyrics& lyrics() const { return lyrics_; }
         
         private:
+            //maybe go to have a song object own a metadata?
+            //probably neater than a bunch of strings idk /shrug
             std::string title_;
             std::string artist_;
             std::string album_;
+            std::string author_;
             std::string lyricist_;
             std::string lrcAuthor_;
             std::optional<Timestamp> length_;
