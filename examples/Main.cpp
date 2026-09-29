@@ -20,8 +20,13 @@ int main(int argc, char* argv[]) {
 
     lrc::Parser parser;
     lrc::Result s = parser.parseFile(file);
+    lrc::Song song = s.song;
 
-    std::cout << "break\n";
+
+    for(lrc::Lyric l : song.lyrics()) {
+        std::cout << l << '\n';
+    }
+
 
     return 0;
 }

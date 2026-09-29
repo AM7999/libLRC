@@ -2,7 +2,6 @@
 #define LRC_SONG_H
 
 #include <string>
-#include <optional>
 
 #include <lrc/Lyrics.hpp>
 #include <lrc/Structs.h>
@@ -14,31 +13,24 @@ namespace lrc {
             Song(const Metadata& meta, const Lyrics& lyrics);
 
             // getters and setters
-            const std::string& title() const { return title_; }
-            void setTitle(std::string& t) { this->title_ = t; }
+            const std::string& title() const { return meta.ti; }
+            void setTitle(std::string& t) { this->meta.ti = t; }
 
-            const std::string& artist() const { return artist_; }
-            void setArtist(std::string& a) { this->artist_ = a; }
+            const std::string& artist() const { return meta.ar; }
+            void setArtist(std::string& a) { this->meta.ar= a; }
 
-            const std::string& album() const { return album_; }
-            void setAlbum(std::string& a) { this->album_ = a; }
+            const std::string& album() const { return meta.al; }
+            void setAlbum(std::string& a) { this->meta.al = a; }
 
-            std::optional<Timestamp> length() const { return length_; }
-            void setLength(Timestamp& t) { length_ = t; }
+            // no more std::optional
+            Timestamp length() const { return meta.length; }
+            void setLength(Timestamp& t) { this->meta.length = t; }
 
             Lyrics& lyrics() { return lyrics_; }
             const Lyrics& lyrics() const { return lyrics_; }
         
         private:
-            //maybe go to have a song object own a metadata?
-            //probably neater than a bunch of strings idk /shrug
-            std::string title_;
-            std::string artist_;
-            std::string album_;
-            std::string author_;
-            std::string lyricist_;
-            std::string lrcAuthor_;
-            std::optional<Timestamp> length_;
+            Metadata meta = {};
             Lyrics lyrics_;
     };
 }

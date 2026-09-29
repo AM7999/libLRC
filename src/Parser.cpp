@@ -33,26 +33,23 @@ namespace lrc {
 
             switch(parsedLine.kind) {
                 case Parsed::Kind::Lyric:
-                    std::cout << "added new Parsed::Kind::Lyric of: " << parsedLine.value << std::endl;
                     lr.push_back({parsedLine.ts, parsedLine.value});
                     break;
                 case Parsed::Kind::Metadata:
                     Timestamp temp;
 
                     // FIXME: This is bad. Really Bad. There has to be a better way than doing all this
-                    if(parsedLine.tag == "ti") {meta.ti = parsedLine.value;}
-                    if(parsedLine.tag == "ar") {meta.ar = parsedLine.value;}
-                    if(parsedLine.tag == "al") {meta.al = parsedLine.value;}
-                    if(parsedLine.tag == "au") {meta.au = parsedLine.value;}
-                    if(parsedLine.tag == "lr") {meta.lr = parsedLine.value;}
+                    if(parsedLine.tag == "ti") { meta.ti = parsedLine.value; }
+                    if(parsedLine.tag == "ar") { meta.ar = parsedLine.value; }
+                    if(parsedLine.tag == "al") { meta.al = parsedLine.value; }
+                    if(parsedLine.tag == "au") { meta.au = parsedLine.value; }
+                    if(parsedLine.tag == "lr") { meta.lr = parsedLine.value; }
                     
                     if(parsedLine.tag == "length") 
                         if(tryTimestamp(parsedLine.value, temp)) 
                             meta.length = temp;
                     
                     if(parsedLine.tag == "by") {meta.by = parsedLine.value;}
-                    
-                    std::cout << "added new Parsed::Kind::Metadata of: " << parsedLine.value << std::endl;
                     break;
                 case Parsed::Kind::Comment:
                     break;
@@ -87,13 +84,15 @@ namespace lrc {
         // i did all this to write a fucking audacious plugin.....
 
         try {
+            // parse minute
             int m = std::stoi(raw.substr(0,colonPos));
+            // parse secconds
             int s = std::stoi(raw.substr(colonPos + 1, dotPos - colonPos -1));
             std::string fracStr = raw.substr(dotPos + 1);
             
             int frac = std::stoi(fracStr);
             int ms = (fracStr.size() == 2) ? frac * 10 : frac;
-
+            
             out.ms = (static_cast<int64_t>(m)*60+s)*1000+ms;
             return true;
         }

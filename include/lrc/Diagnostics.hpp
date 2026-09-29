@@ -6,14 +6,17 @@
 #include <lrc/Song.hpp>
 
 namespace lrc {
-    // just something to have
+    // 
     enum class Severity { Warning, Error };
 
     // if something went wrong fill out this struct
     struct ParseDiag {
+        // Warning or Error
         Severity sv;
+        // what line number the issue occurs on
         std::size_t lineNumber;
         std::string line;
+        // what whent wrong
         std::string message;
     };
 
@@ -23,11 +26,9 @@ namespace lrc {
         // and if anything happened like a warning or error
         // a diagnostic is added here
         std::vector<ParseDiag> diagnostics;
-
-        bool hasErrors() const;
-        // if hasErrors is true ok is false
-        // inverse is true
-        bool ok() const { return !hasErrors(); }
+        // return no if diagnostics is empty
+        // return yes if theres something in there
+        bool ok() const { return !diagnostics.empty(); }
     };
 }
 
