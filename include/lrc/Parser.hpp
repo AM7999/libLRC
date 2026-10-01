@@ -13,11 +13,11 @@ namespace lrc {
             explicit Parser();
 
             Result parse(const std::string& text) const;
-            Result parse(std::istream& stream) const;
             // changed to ifstream :3
             Result parseFile(std::ifstream& path) const;
 
         private:
+            // never filled this comment whoops!!
             struct Parsed {
                 enum class Kind { Metadata, Lyric, Comment, Blank, Malformed } kind;
                 std::string tag;

@@ -10,7 +10,7 @@ namespace lrc {
     class Song {
         public:
             Song() = default;
-            Song(const Metadata& meta, const Lyrics& lyrics);
+            Song(const Metadata& meta, const Lyrics& lyrics) {this->meta = meta;this->lyrics_ = lyrics;}
 
             // getters and setters
             const std::string& title() const { return meta.ti; }
